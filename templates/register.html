@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>User Registration</title>
+	<style>
+        /* Basic styling for form layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+	
+	</style>
+	<style>
+        /* Basic styling for form layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff; /* Background color for the div */
+            color: #333333; /* Text color for the div */
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for error messages */
+        .error-message {
+            color: #ff0000; /* Red color for error messages */
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Style for success messages */
+        .success-message {
+            color: #008000; /* Green color for success messages */
+            font-size: 14px;
+            margin-top: 5px;
+        }
+	</style>
+	<style>
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            opacity: 1;
+            transition: opacity 0.6s;
+            margin-bottom: 15px;
+        }
+
+        .alert.success {
+            background-color: #04AA6D;
+        }
+
+        .alert.info {
+            background-color: #2196F3;
+        }
+
+        .alert.warning {
+            background-color: #ff9800;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+	</style>
+</head>
+<body>
+<script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function () {
+                div.style.display = "none";
+            }, 600);
+        }
+    }
+</script>
+{% if messages %}
+	{% for message in messages %}
+		{% if message.tags == 'error' %}
+			<div class="alert warning">
+				<span class="closebtn">&times;</span>
+				<strong>Warning!</strong> {{ message }}
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}
+<div class="container">
+	
+	<h2>User Registration</h2>
+	
+	<form method="post">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="id_username">Username:</label>
+			<input type="text" id="id_username" name="username" required>
+		</div>
+		<div class="form-group">
+			<label for="id_email">Email:</label>
+			<input type="email" id="id_email" name="email" required>
+		</div>
+		<div class="form-group">
+			<label for="id_password1">Password:</label>
+			<input type="password" id="id_password1" name="password1" required>
+		</div>
+		<div class="form-group">
+			<label for="id_password2">Confirm Password:</label>
+			<input type="password" id="id_password2" name="password2" required>
+		</div>
+		<div class="form-group">
+			<input type="submit" value="Sign Up">
+		</div>
+	</form>
+</div>
+{#<script type="text/javascript">#}
+{#    alert("{{ error_message }}")#}
+{#</script>#}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% load static %}
+<!-- navbar.html -->
+<nav class="navbar">
+	<div class="container">
+		<a href="{% url 'index' %}" class="logo ">
+			<img src="{% static 'images/logo.jfif' %}" alt="" class="logo-img">
+		</a>
+		<ul class="nav-links">
+			<li><a href="{% url 'index' %}">Home</a></li>
+			
+			<!-- Add more links as needed -->
+			{% if user.is_authenticated %}
+				<li><a href="{% url 'logout' %}">logout</a></li>
+			{% else %}
+				<li><a href="{% url 'register' %}">Register</a></li>
+				<li><a href="{% url 'login' %}">login</a></li>
+			{% endif %}
+		
+		
+		</ul>
+	</div>
+</nav>

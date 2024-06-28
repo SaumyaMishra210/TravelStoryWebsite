@@ -1,0 +1,10 @@
+<!-- templates/ greeting.html -->
+<div class="user-greeting">
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+    {% else %}
+        <p>Hello, Guest!</p>
+	    
+    {% endif %}
+
+</div>
